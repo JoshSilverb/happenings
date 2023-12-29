@@ -1,0 +1,91 @@
+.container {
+    position: relative;
+}
+
+.body {
+    background-color: blue;
+}
+
+.pageTitle {
+    color: rgb(70, 70, 70);
+    margin: auto;
+    width: 50%;
+    font-size: 50px;
+}
+
+.header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.homeLink {
+    position: relative;
+    top: 10%;
+    left: 2%;
+    font-size: 20px;
+}
+
+.exploreLink {
+    position: absolute;
+    top: 10%;
+    right: 2%;
+    font-size: 30px;
+}
+
+.content{
+  position: relative;
+  top: 75px;
+}
+
+.post {
+    position: relative;
+    top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-top: 50px;
+    width: 50%;
+    
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user_page_buttons1 {
+    position: relative;
+    
+}
+
+a:link {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+  
+a:visited {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+  
+a:hover {
+    color: black;
+    background-color: transparent;
+    text-decoration: underline;
+}
+  
+a:active {
+    color: black;
+    background-color: transparent;
+    text-decoration: underline;
+}

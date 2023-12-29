@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 class='pageTitle'>Followers</h1>
+        {% for follower in followers %}
+            <div class="post">
+                <a href='/u/{{follower.username}}/'>
+                    <img src='{{follower.user_img_url}}' width="50" alt="{{follower.username}}" style="vertical-align:middle">
+                    <b style='font-size: large;'>{{follower.username}}</b>
+                </a>
+                {% if logname == follower.username %}
+                    [You]
+                {% else %}
+                    {% if follower.logname_follows_username %}
+                         - following
+                        <form style="padding-top: 0.3cm;" action="/following/?target=/u/{{username}}/followers" method="post" enctype="multipart/form-data">
+                            <input type="submit" name="unfollow" value="unfollow"/>
+                            <input type="hidden" name="username" value="{{follower.username}}"/>
+                            <input type="hidden" name="operation" value="unfollow"/>
+                        </form>
+                    {% else %}
+                         - not following
+                        <form style="padding-top: 0.3cm;" action="/following/?target=/u/{{username}}/followers" method="post" enctype="multipart/form-data">
+                            <input type="submit" name="follow" value="follow"/>
+                            <input type="hidden" name="username" value="{{follower.username}}"/>
+                            <input type="hidden" name="operation" value="follow"/>
+                        </form>
+                    {% endif %}
+                {% endif %}
+                
+            </div>
+        {% endfor %}
+{% endblock %}

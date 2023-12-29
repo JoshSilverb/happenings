@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class='post'>
+        <p>
+            <a href='/u/{{owner}}/'>
+                <img src='{{owner_img_url}}' width="25" alt="">
+                <b>{{owner}}</b>
+            </a>
+            {{created}}
+        </p>
+        <img src="{{filename}}" style="margin-left: auto; margin-right: auto; width:100%;" alt=""> 
+        {% if owner == logname %}
+            <form style="padding-bottom: 0.1cm;" action="/posts/?target=/u/{{logname}}/" method="post" enctype="multipart/form-data">
+            {% if likes == 1 %}
+                {{likes}} like
+            {% else %}
+                {{likes}} likes
+            {% endif %}
+                <input type="hidden" name="operation" value="delete"/>
+                <input type="hidden" name="postid" value="{{postid}}"/>
+                <input type="submit" name="delete" value="delete this post"/>
+            </form>
+        {% else %}
+            {% if likes == 1 %}
+                {{likes}} like
+            {% else %}
+                {{likes}} likes
+            {% endif %}
+        {% endif %}
+        {% if userliked %}
+            <form action="/likes/?target=/p/{{postid}}" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="operation" value="unlike"/>
+                <input type="hidden" name="postid" value="{{postid}}"/>
+                <input type="submit" name="unlike" value="unlike"/>
+            </form>
+        {% else %}
+            <form action="/likes/?target=/p/{{postid}}" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="operation" value="like"/>
+                <input type="hidden" name="postid" value="{{postid}}"/>
+                <input type="submit" name="like" value="like"/>
+            </form>
+        {% endif %}
+
+        {% for comment in comments %}
+            
+            {% if comment.owner == logname %}
+                <form style="padding-bottom: 0.1cm;" action="/comments/?target=/p/{{postid}}/" method="post" enctype="multipart/form-data">
+                    <b><a href='/u/{{comment.owner}}/'>{{comment.owner}}</a></b> {{comment.text}}
+                    <input type="hidden" name="operation" value="delete"/>
+                    <input type="hidden" name="commentid" value="{{comment.commentid}}"/>
+                    <input type="submit" name="uncomment" value="delete"/>
+                </form>
+            {% else %}
+                <p><b><a href='/u/{{comment.owner}}/'>{{comment.owner}}</a></b> {{comment.text}}</p>
+            {% endif %}
+
+        {% endfor %}
+        <form action="/comments/?target=/p/{{postid}}/" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="operation" value="create"/>
+            <input type="hidden" name="postid" value="{{postid}}"/>
+            <input type="text" name="text" required/>
+            <input type="submit" name="comment" value="comment"/>
+        </form>
+    </div>
+{% endblock %}

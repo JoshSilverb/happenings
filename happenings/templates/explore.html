@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 class='pageTitle'>Explore</h1>
+    <h2 style='margin-left: auto; margin-right: auto; width: 50%;'>Top users to follow</h2>
+        {% for user in not_following %}
+            <div class="post">
+                <p><form action="/following/?target=/explore/" method="post" enctype="multipart/form-data">
+                    <a href='/u/{{user.username}}/'>
+                    <img src='{{user.user_img_url}}' width="50" alt="{{user.username}}" style="vertical-align:middle">
+                    <b style='font-size: large; padding-left: 0.1in;'>{{user.username}}</b>
+                    
+                </a>
+                    <input type="submit" name="follow" value="follow"/>
+                    <input type="hidden" name="username" value="{{user.username}}"/>
+                    <input type="hidden" name="operation" value="follow"/>
+                </form>
+            </div>
+        {% endfor %}
+{% endblock %}

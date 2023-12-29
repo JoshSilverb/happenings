@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>insta485</title>
+</head>
+<body>
+    <div class='header'>
+        <div class='homeLink'>
+            <h1><a href='/'><img style="vertical-align:middle" src='/static/images/logo.png' width=100 alt="">-gram</a></h1>
+        </div>
+        <div class='exploreLink'>
+            <a href='/explore/'>Explore</a>
+            <b>|</b>
+            <a href='/u/{{logname}}/'>{{logname}}</a>
+        </div>
+    </div>
+
+    <div class='content'>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

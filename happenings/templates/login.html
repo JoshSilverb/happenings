@@ -1,0 +1,17 @@
+{% extends "base2.html" %}
+{% block content %}
+    <h1 class='pageTitle'>LOG IN</h1>
+    <div>
+        <div class='post'>
+            <!-- DO NOT CHANGE THIS (aside from styling) -->
+            <form action="/accounts/?target=/" method="post" enctype="multipart/form-data">
+                <p><input type="text" name="username" placeholder="username" required/></p>
+                <p><input type="password" name="password" placeholder="password" required/></p>
+                <p><input type="submit" value="login"/></p>
+                <input type="hidden" name="operation" value="login"/>
+            </form>
+            <p>Don't have an account? <b><a href='/accounts/create/'>Sign up!</a></b></p>
+            <p><div style="color: crimson;">{{status}}</div></p>
+        </div>
+    </div>
+{% endblock %}

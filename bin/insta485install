@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Stop on errors, print commands
+set -Eeuo pipefail
+set -x
+
+# Create a python venv
+python3 -m venv env
+
+# Run python venv
+source env/bin/activate
+
+# Install backend
+pip install -r requirements.txt
+pip install -e .
+
+# Install front end
+npm install .
+
+# Install latest chromedriver
+npm install chromedriver --detect_chromedriver_version --no-save

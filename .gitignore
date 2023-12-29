@@ -1,0 +1,13 @@
+env/
+*/__pychache__
+.vscode/
+*.egg-info/
+node_modules/
+*/__pycache__/
+bundle.js
+tmp/
+cookies.txt
+session.json
+var/
+insta485.egg-info
+*.cpython-38.pyc
